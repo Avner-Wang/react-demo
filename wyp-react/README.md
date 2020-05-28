@@ -69,3 +69,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 ***锁定安装时的版本号
+
+
+react16基础学习：https://m.bilibili.com/video/BV1g4411i7po
