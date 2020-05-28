@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// 结构化赋值
+
+class app extends Component {
+  render() {
+    return (
+      <Fragment>
+        <ul className="my-list">
+          <li>{true ? "wwwwe" : "xxxxx"}</li>
+          <li>love duoduo</li>
+          <li></li>
+          <li></li>
+        </ul>
+      </Fragment>
+    );
+    // var ab = React.createElement("li", null, "wyp-bifan");
+    // var ac = React.createElement("li", null, "love duoduo");
+    // var root = React.createElement("ul", { className: "my-list" }, ab, ac);
+  }
 }
 
-export default App;
+export default app;
