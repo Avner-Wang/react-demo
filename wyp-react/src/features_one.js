@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import ReactDom from "react-dom";
 // import ReactScripts from "react-scripts";
+import "./style.css";
+import Features_one_item from "./features_one_item";
 
 class Features_one extends Component {
   constructor(props) {
@@ -14,8 +16,10 @@ class Features_one extends Component {
     return (
       <Fragment>
         {/* 注释 */}
-        <div>
+        <div className="inputF">
+          <label htmlFor="wangyeping">添加服务</label>
           <input
+            className="input"
             value={this.state.inputValue}
             onChange={this.inputChange.bind(this)}
           />
@@ -24,13 +28,27 @@ class Features_one extends Component {
         <ul>
           {this.state.list.map((item, index) => {
             return (
+              <Features_one_item
+                key={index + item}
+                content={item}
+                index={index}
+                deleteItem={this.deleteItem.bind(this)}
+              />
+            );
+
+            {
+              /*
               <li
                 onClick={this.deleteItem.bind(this, index)}
                 key={index + item}
+                dangerouslySetInnerHTML={{ __html: item }}
               >
-                {item}
-              </li>
-            );
+               可以解析input框内HTML标签 
+               {item} 
+                </li>
+              
+              */
+            }
           })}
           {/* <li>英语</li>
           <li>历史</li>
