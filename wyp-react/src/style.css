@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    width: 100%;
+    height: 40px;
+    background-color: blueviolet;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    /* direction: colume; */
+}
+
+ul {
+    /* display: flex; */
+
+}
+
+.input {
+    border: 3px solid #12f35d;
+}
