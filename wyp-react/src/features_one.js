@@ -13,6 +13,7 @@ class Features_one extends Component {
   render() {
     return (
       <Fragment>
+        {/* 注释 */}
         <div>
           <input
             value={this.state.inputValue}
@@ -22,7 +23,14 @@ class Features_one extends Component {
         </div>
         <ul>
           {this.state.list.map((item, index) => {
-            return <li key={index + item}>{item}</li>;
+            return (
+              <li
+                onClick={this.deleteItem.bind(this, index)}
+                key={index + item}
+              >
+                {item}
+              </li>
+            );
           })}
           {/* <li>英语</li>
           <li>历史</li>
@@ -43,7 +51,16 @@ class Features_one extends Component {
   addList() {
     this.setState({
       list: [...this.state.list, this.state.inputValue],
+      inputValue: "",
       // list: ['英语','历史','数学','政治',this.state.list, this.state.inputValue],
+    });
+  }
+  deleteItem(index) {
+    // let list = this.state.list;
+    // list.splice(index, 1);
+    this.state.list.splice(index, 1);
+    this.setState({
+      list: this.state.list,
     });
   }
 }
