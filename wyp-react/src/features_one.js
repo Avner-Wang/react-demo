@@ -9,8 +9,12 @@ class Features_one extends Component {
     super(props);
     this.state = {
       inputValue: "wypiscomeon",
-      list: ["英语", "历史", "数学", "政治"],
+      list: ["英语", "历史", "数学"],
     };
+  }
+
+  componentWillMount() {
+    console.log("这里是componentWillMount时刻");
   }
   render() {
     return (
@@ -22,13 +26,21 @@ class Features_one extends Component {
             className="input"
             value={this.state.inputValue}
             onChange={this.inputChange.bind(this)}
+            ref={(input) => {
+              this.input = input;
+            }}
           />
           <button onClick={this.addList.bind(this)}>添加学习清单列表</button>
         </div>
-        <ul>
+        <ul
+          ref={(ul) => {
+            this.ul = ul;
+          }}
+        >
           {this.state.list.map((item, index) => {
             return (
               <Features_one_item
+                // avname={"wyp"}
                 key={index + item}
                 content={item}
                 index={index}
@@ -58,20 +70,36 @@ class Features_one extends Component {
     );
   }
 
-  inputChange(e) {
-    console.log(e);
+  inputChange() {
+    // console.log(e);
     // this.state.inputValue = e.target.value;
     this.setState({
-      inputValue: e.target.value,
+      inputValue: this.input.value,
     });
     console.log(this);
   }
+
+  // inputChange(e) {
+  //   console.log(e);
+  //   // this.state.inputValue = e.target.value;
+  //   this.setState({
+  //     inputValue: e.target.value,
+  //   });
+  //   console.log(this);
+  // }
+
   addList() {
-    this.setState({
-      list: [...this.state.list, this.state.inputValue],
-      inputValue: "",
-      // list: ['英语','历史','数学','政治',this.state.list, this.state.inputValue],
-    });
+    this.setState(
+      {
+        list: [...this.state.list, this.state.inputValue],
+        inputValue: "",
+        // list: ['英语','历史','数学','政治',this.state.list, this.state.inputValue],
+      },
+      () => {
+        console.log(this.ul.querySelectorAll("li").length);
+      }
+    );
+    // console.log(this.ul.querySelectorAll("li").length);
   }
   deleteItem(index) {
     // let list = this.state.list;
